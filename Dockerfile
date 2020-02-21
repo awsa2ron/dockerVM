@@ -39,4 +39,7 @@ USER ${USER}
 WORKDIR /home/${USER}
 
 COPY .gitconfig .
+RUN echo "source /usr/share/bash-completion/completions/git" >> ~/.bashrc
+RUN echo "source /etc/bash_completion.d/git-prompt" >> ~/.bashrc
+RUN echo "export PS1='\w$(__git_ps1 " (%s)")\$ '" >> ~/.bashrc
 
