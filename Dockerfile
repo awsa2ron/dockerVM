@@ -17,6 +17,8 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     golang \
     bash-completion \
+    libtool \
+# aws kinesis video stream
     libssl-dev \
     libcurl4-openssl-dev \
     liblog4cplus-dev \
