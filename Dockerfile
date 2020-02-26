@@ -15,23 +15,19 @@ RUN apt-get update && apt-get install -y \
     pkg-config \
     python3 \
     python3-pip \
-    bash-completion
+    golang \
+    bash-completion \
+    libssl-dev \
+    libcurl4-openssl-dev \
+    liblog4cplus-dev \
+# install cross compile toolchain
+    gcc-arm-linux-gnueabi \
+    g++-arm-linux-gnueabi \
+    binutils-arm-linux-gnueabi
 
 
 # install aws CLI version 1
 RUN pip3 install awscli --upgrade --user
-
-# install cross compile toolchain
-RUN apt-get install -y \
-    libssl-dev \
-    libcurl4-openssl-dev \
-    liblog4cplus-dev
-
-# install cross compile toolchain
-RUN apt-get install -y \
-    gcc-arm-linux-gnueabi \
-    g++-arm-linux-gnueabi \
-    binutils-arm-linux-gnueabi
 
 
 # Uncomment to add user
