@@ -28,9 +28,6 @@ RUN apt-get update && apt-get install -y \
     binutils-arm-linux-gnueabi
 
 
-# install aws CLI version 1
-RUN pip3 install awscli --upgrade --user
-
 
 # Uncomment to add user
 RUN useradd -rm -d /home/${USER} -s /bin/bash -g root -G sudo -u 1000 ${USER} && \
@@ -38,8 +35,12 @@ echo "${USER}:${PASSWD}" | chpasswd
 USER ${USER}
 WORKDIR /home/${USER}
 
+# install aws CLI version 
+RUN pip3 install awscli --upgrade --user
+
 COPY .gitconfig .
 RUN echo "source /usr/share/bash-completion/bash_completion" >> ~/.bashrc
 RUN echo "source /etc/bash_completion.d/git-prompt" >> ~/.bashrc
 RUN echo "export PS1='\w$(__git_ps1 " (%s)")\$ '" >> ~/.bashrc
+RUN echo 'export PATH="/usr/local/bin/:$PATH"' >> ~/.bashrc
 
