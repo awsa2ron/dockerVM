@@ -36,11 +36,9 @@ USER ${USER}
 WORKDIR /home/${USER}
 
 # install aws CLI version 
-#RUN pip3 install awscli --upgrade --user
+RUN pip3 install awscli --upgrade --user
 
 COPY .gitconfig .
 RUN echo "source /usr/share/bash-completion/bash_completion" >> ~/.bashrc
-RUN echo "source /etc/bash_completion.d/git-prompt" >> ~/.bashrc
-RUN echo 'export PS1='\w$(__git_ps1 " (%s)")\$ '' >> ~/.bashrc
+#RUN echo "source /etc/bash_completion.d/git-prompt" >> ~/.bashrc
 RUN echo 'export PATH="/usr/local/bin/:$PATH"' >> ~/.bashrc
-
