@@ -21,14 +21,14 @@ RUN apt-get update && apt-get install -y \
 # aws kinesis video stream
     libssl-dev \
     libcurl4-openssl-dev \
-    liblog4cplus-dev \
+    liblog4cplus-dev 
 # install cross compile toolchain
-    gcc-arm-linux-gnueabi \
-    g++-arm-linux-gnueabi \
-    binutils-arm-linux-gnueabi \
-    gcc-mips-linux-gnu \
-    g++-mips-linux-gnu \
-    binutils-mips-linux-gnu
+#    gcc-arm-linux-gnueabi \
+#    g++-arm-linux-gnueabi \
+#    binutils-arm-linux-gnueabi \
+#    gcc-mips-linux-gnu \
+#    g++-mips-linux-gnu \
+#    binutils-mips-linux-gnu
 
 
 
