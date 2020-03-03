@@ -1,8 +1,5 @@
 FROM ubuntu:18.04
 
-ENV USER aaron
-ENV PASSWD xk3124919
-
 # install sudo vim git python
 RUN apt-get update && apt-get install -y \
     apt-utils \
@@ -32,14 +29,8 @@ RUN apt-get update && apt-get install -y \
     lib32ncurses5
 
 
-# Uncomment to add user
-RUN useradd -rm -d /home/${USER} -s /bin/bash -g root -G sudo -u 1000 ${USER} && \
-echo "${USER}:${PASSWD}" | chpasswd
-USER ${USER}
-WORKDIR /home/${USER}
-
 # install aws CLI version 
-RUN pip3 install awscli --upgrade --user
+RUN pip3 install awscli --upgrade
 
 COPY .gitconfig .
 RUN echo "source /usr/share/bash-completion/bash_completion" >> ~/.bashrc
