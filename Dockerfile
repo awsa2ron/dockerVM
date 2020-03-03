@@ -3,7 +3,6 @@ FROM ubuntu:18.04
 # install sudo vim git python
 RUN apt-get update && apt-get install -y \
     apt-utils \
-    sudo \
     vim \
     git \
     cmake \
