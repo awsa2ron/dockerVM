@@ -17,6 +17,9 @@ RUN apt-get update && apt-get install -y \
     golang \
     bash-completion \
     libtool \
+    sudo
+
+RUN apt-get install -y \
 # aws kinesis video stream
     libssl-dev \
     libcurl4-openssl-dev \
