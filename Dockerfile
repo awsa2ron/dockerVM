@@ -21,13 +21,13 @@ RUN apt-get update && apt-get install -y \
 
 RUN apt-get install -y \
 # aws kinesis video stream
-    libssl-dev \
-    libcurl4-openssl-dev \
-    liblog4cplus-dev \
+#    libssl-dev \
+#    libcurl4-openssl-dev \
+#    liblog4cplus-dev \
 # aws kinesis video stream WebRTC
-    liblog4cplus-1.1-9 \
-    liblog4cplus-dev \
-    libcap-dev \
+#    liblog4cplus-1.1-9 \
+#    liblog4cplus-dev \
+#    libcap-dev \
 # install cross compile toolchain
 #    gcc-arm-linux-gnueabi \
 #    g++-arm-linux-gnueabi \
