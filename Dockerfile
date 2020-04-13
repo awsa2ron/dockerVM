@@ -12,6 +12,8 @@ RUN apt-get update && apt-get install -y \
     g++ \
     autoconf \
     pkg-config \
+    wget \
+    python \
     python3 \
     python3-pip \
     golang \
