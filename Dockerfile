@@ -37,7 +37,8 @@ RUN apt-get install -y \
 #    gcc-mips-linux-gnu \
 #    g++-mips-linux-gnu \
 #    binutils-mips-linux-gnu
-    lib32ncurses5
+    lib32ncurses5 \
+    iproute2
 
 # Uncomment to add user
 RUN useradd -rm -d /home/${USER} -s /bin/bash -g root -G sudo -u 1000 ${USER} && \
