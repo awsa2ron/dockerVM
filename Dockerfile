@@ -41,7 +41,6 @@ RUN apt-get install -y \
 #    g++-mips-linux-gnu \
 #    binutils-mips-linux-gnu
     zlib1g-dev \
-    lib32ncurses5 \
     iproute2
 
 # Uncomment to add user
