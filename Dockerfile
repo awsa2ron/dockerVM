@@ -1,7 +1,9 @@
 FROM ubuntu:20.04
 
-ENV USER docker
-ENV PASSWD docker
+ARG USER=docker
+ARG PASSWD=docker
+ARG UID=1000
+ARG GID=1000
 
 ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
@@ -19,32 +21,14 @@ RUN apt-get update && apt-get install -y \
     python \
     python3 \
     python3-pip \
-    golang \
     bash-completion \
     libtool \
+    iproute2 \
     sudo
 
-RUN apt-get install -y \
-# aws kinesis video stream
-#    libssl-dev \
-#    libcurl4-openssl-dev \
-#    liblog4cplus-dev \
-# aws kinesis video stream WebRTC
-#    liblog4cplus-1.1-9 \
-#    liblog4cplus-dev \
-#    libcap-dev \
-# install cross compile toolchain
-#    gcc-arm-linux-gnueabi \
-#    g++-arm-linux-gnueabi \
-#    binutils-arm-linux-gnueabi \
-#    gcc-mips-linux-gnu \
-#    g++-mips-linux-gnu \
-#    binutils-mips-linux-gnu
-    zlib1g-dev \
-    iproute2
-
 # Uncomment to add user
-RUN useradd -rm -d /home/${USER} -s /bin/bash -g root -G sudo -u 1000 ${USER} && \
+RUN groupadd -g $GID -o $USER
+RUN useradd -rm -d /home/${USER} -s /bin/bash -g $GID -G docker,sudo -u $UID ${USER} && \
 echo "${USER}:${PASSWD}" | chpasswd
 USER ${USER}
 WORKDIR /home/${USER}
@@ -54,5 +38,4 @@ RUN pip3 install awscli --upgrade --user
 
 COPY .gitconfig .
 RUN echo "source /usr/share/bash-completion/bash_completion" >> ~/.bashrc
-#RUN echo "source /etc/bash_completion.d/git-prompt" >> ~/.bashrc
 RUN echo 'export PATH="/usr/local/bin/:$PATH"' >> ~/.bashrc
