@@ -26,6 +26,12 @@ RUN apt-get update && apt-get install -y \
     iproute2 \
     sudo
 
+RUN apt-get install -y \
+    libncurses-dev \
+    openssl \
+    libssl-dev \
+    bc
+
 # Uncomment to add user
 RUN groupadd -g $GID -o $USER
 RUN useradd -rm -d /home/${USER} -s /bin/bash -g $GID -G docker,sudo -u $UID ${USER} && \
