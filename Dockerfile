@@ -30,7 +30,8 @@ RUN apt-get install -y \
     libncurses-dev \
     openssl \
     libssl-dev \
-    bc
+    bc \
+    curl
 
 # Uncomment to add user
 RUN groupadd -g $GID -o $USER
@@ -42,6 +43,11 @@ WORKDIR /home/${USER}
 # install aws CLI version 
 RUN pip3 install awscli --upgrade --user
 
+# git
 COPY .gitconfig .
 RUN echo "source /usr/share/bash-completion/bash_completion" >> ~/.bashrc
 RUN echo 'export PATH="/usr/local/bin/:$PATH"' >> ~/.bashrc
+
+# rust
+RUN wget https://static.rust-lang.org/rustup/rustup-init.sh
+RUN sh rustup-init.sh -y
