@@ -53,4 +53,4 @@ RUN echo 'export PATH="/usr/local/bin/:$PATH"' >> ~/.bashrc
 
 # rust
 RUN wget https://static.rust-lang.org/rustup/rustup-init.sh
-RUN sh rustup-init.sh -y
+RUN sh rustup-init.sh -y && rm rustup-init.sh
