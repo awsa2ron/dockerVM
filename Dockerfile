@@ -8,6 +8,9 @@ ARG GID=1000
 ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+# Set environment variables
+ENV TERM xterm-256color
+
 # install sudo vim git python
 RUN apt-get update && apt-get install -y \
     apt-utils \
